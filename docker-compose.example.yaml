@@ -1,0 +1,27 @@
+version: "3.1"
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: nomedocontainerbancomysql
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker/data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=senha
+      - MYSQL_DATABASE=dabasename
+    networks:
+      - my_net
+  adminer:
+    image: adminer
+    container_name: nomegerenciadordobancodedados
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - my_net
+networks:
+  my_net:
+    driver: bridge
