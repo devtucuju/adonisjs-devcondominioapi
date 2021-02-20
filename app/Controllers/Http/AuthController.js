@@ -119,15 +119,28 @@ class AuthController {
 
   async logout({ request, response, auth }) {
     // let refreshToken = request.input('refresh_token');
-    const { refresh_token } = request.all();
-    if (!refresh_token) {
-      refresh_token = request.header('refresh_token');
+    // const { refresh_token } = request.all();
+    // if (!refresh_token) {
+    //   refresh_token = request.header('refresh_token');
+    // }
+
+    // await auth.authenticator('jwt').revokeTokens([refresh_token]);
+
+    // return response.status(204).send({});
+    try {
+      const check = await auth.check();
+
+      if (check) {
+        const token = await auth.getAuthHeader();
+        await auth.authenticator("jwt").revokeTokens([token]);
+        return response.status(200).send({ message: "Logout successfully!" });
+      }
+    } catch (error) {
+      return response.send({ message: "Invalid jwt token" });
     }
-
-    await auth.authenticator('jwt').revokeTokens([refresh_token], true);
-
-    return response.status(204).send({});
   }
+
+
 }
 
 module.exports = AuthController;
