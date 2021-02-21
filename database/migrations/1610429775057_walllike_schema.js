@@ -1,33 +1,33 @@
-'use strict';
+'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class WalllikeSchema extends Schema {
-  up() {
-    this.create('walllikes', table => {
-      table.increments();
+  up () {
+    this.create('wall_likes', table => {
+      table.increments()
       table
-        .integer('id_wall')
+        .integer('wall_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('walls')
-        .onDelete('cascade');
+        .onDelete('cascade')
       table
-        .integer('id_user')
+        .integer('user_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('users')
-        .onDelete('cascade');
-      table.timestamps();
-    });
+        .onDelete('cascade')
+      table.timestamps()
+    })
   }
 
-  down() {
-    this.drop('walllikes');
+  down () {
+    this.drop('wall_likes')
   }
 }
 
-module.exports = WalllikeSchema;
+module.exports = WalllikeSchema

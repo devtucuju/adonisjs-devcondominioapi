@@ -1,28 +1,28 @@
-'use strict';
+'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class BilletSchema extends Schema {
-  up() {
+  up () {
     this.create('billets', table => {
-      table.increments();
+      table.increments()
       table
-        .integer('id_unit')
+        .integer('unit_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('units')
-        .onDelete('cascade');
-      table.string('title');
-      table.string('fileurl');
-      table.timestamps();
-    });
+        .onDelete('cascade')
+      table.string('title')
+      table.string('fileurl')
+      table.timestamps()
+    })
   }
 
-  down() {
-    this.drop('billets');
+  down () {
+    this.drop('billets')
   }
 }
 
-module.exports = BilletSchema;
+module.exports = BilletSchema

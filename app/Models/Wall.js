@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class Wall extends Model {
+  likes () {
+    return this.hasMany('App/Models/WallLike')
+  }
 }
 
 module.exports = Wall

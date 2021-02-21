@@ -1,29 +1,29 @@
-'use strict';
+'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class UnitpeopleSchema extends Schema {
-  up() {
+  up () {
     this.create('unitpeoples', table => {
-      table.increments();
+      table.increments()
       table
-        .integer('id_unit')
+        .integer('unit_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('units')
-        .onDelete('cascade');
+        .onDelete('cascade')
 
-      table.string('name');
-      table.date('birthdate');
-      table.timestamps();
-    });
+      table.string('name')
+      table.date('birthdate')
+      table.timestamps()
+    })
   }
 
-  down() {
-    this.drop('unitpeoples');
+  down () {
+    this.drop('unitpeoples')
   }
 }
 
-module.exports = UnitpeopleSchema;
+module.exports = UnitpeopleSchema

@@ -1,34 +1,34 @@
-'use strict';
+'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class ReservationSchema extends Schema {
-  up() {
+  up () {
     this.create('reservations', table => {
-      table.increments();
+      table.increments()
       table
-        .integer('id_unit')
+        .integer('unit_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('units')
-        .onDelete('cascade');
+        .onDelete('cascade')
       table
-        .integer('id_area')
+        .integer('area_id')
         .notNullable()
         .unsigned()
         .references('id')
         .inTable('areas')
-        .onDelete('cascade');
-      table.datetime('reservation_date');
-      table.timestamps();
-    });
+        .onDelete('cascade')
+      table.datetime('reservation_date')
+      table.timestamps()
+    })
   }
 
-  down() {
-    this.drop('reservations');
+  down () {
+    this.drop('reservations')
   }
 }
 
-module.exports = ReservationSchema;
+module.exports = ReservationSchema

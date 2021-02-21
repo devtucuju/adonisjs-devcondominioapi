@@ -4,6 +4,13 @@
 const Model = use('Model')
 
 class WallLike extends Model {
+  wall () {
+    return this.belongsTo('App/Models/Wall')
+  }
+
+  user () {
+    return this.belongsTo('App/Models/User')
+  }
 }
 
 module.exports = WallLike
