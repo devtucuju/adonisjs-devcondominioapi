@@ -8,11 +8,6 @@ class DocController {
     array.list = docs
 
     // serializar o array para trazer o id, titulo e url do arquivo
-    // const serialization = []
-
-    // for (const wall of docs.toJSON()) {
-
-    // }
 
     return response.json(array)
   }
